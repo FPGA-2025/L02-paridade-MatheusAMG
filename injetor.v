@@ -4,7 +4,16 @@ module injetor(
   input erro,
   output reg [8:0] saida
 );
-
-// insira seu código aqui
+ 
+always @(*) begin // injetar erro
+ 
+  if (erro) begin // se erro 1 entao injeta
+    saida = entrada ^ (1 << n); // Se XOR 1 inverte o bit. Entao desloco o bit 1 para posicao e faco XOR nele
+  end
+  else begin
+    saida = entrada; // Nao injeta erro
+  end
+  
+end
 
 endmodule
